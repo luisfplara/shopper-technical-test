@@ -14,6 +14,8 @@ Passo para executar
     1 - dentro da pasta API, execute o server com os comandos
         instalar dependencias
             npm install
+        configurar servidor SQL
+            é necessário configurar os parâmetros de conexão com o servidro MYSQL no arquivo connection.JS
         executar server
             node .\index.js
 
