@@ -9,6 +9,7 @@ Files
     tech-test: possui detalhes das especificações dos teste técnico.
 
 Passo para executar
+
     1 - dentro da pasta API, execute o server com os comandos
         instalar dependencias
             npm install
