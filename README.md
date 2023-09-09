@@ -16,7 +16,7 @@ Passo para executar
             npm install
         configurar servidor SQL
             é necessário configurar os parâmetros de conexão com o servidro MYSQL no arquivo connection.JS
-        executar server
+        executar servidor
             node .\index.js
 
 

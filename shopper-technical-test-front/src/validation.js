@@ -1,7 +1,5 @@
-import { List, useEffect, useState, useLayoutEffect } from 'react'
-import client from './server/client';
+import {useEffect, useState, useLayoutEffect } from 'react'
 
-import { Product } from './models';
 import { GET_PACKS, GET_PRODUCTS } from './server/queries';
 
 import { useLazyQuery, useQuery } from '@apollo/react-hooks';
@@ -36,7 +34,10 @@ function Validate(props) {
             //check if it has new_price
             validationError.push(`Campo new_price faltando`);
 
-        } if (isNaN(product.new_price)) {
+        } 
+        
+        
+        if (isNaN(product.new_price)) {
             //check if new_price is a number
             validationError.push(`Campo new_price não é um valor numérico`);
 
@@ -65,16 +66,35 @@ function Validate(props) {
                     })
                 );
             } else {
+                
+                let priceDiff = Math.abs(product.new_price - data.products[0].sales_price);
+                let price10percent = data.products[0].sales_price * 0.1
 
+                if (product.new_price && (priceDiff > price10percent)) {
+                    //check if new_price is smaller than product cost_price
+                    validationError.push('O reajuste do produto  é maior que 10%`')
+                    setProduct(product => (
+                        {
+                            ...product,
+    
+                            error: [...product.error, validationError],
+    
+                        })
+                    );
+                    
+                  
+                }
                 setProduct(product => (
                     {
                         ...product,
                         name: data.products[0].name,
                         sales_price: data.products[0].sales_price,
+                   
 
                     })
                 );
 
+               
                 getPacks();
             }
         }
@@ -99,7 +119,7 @@ function Validate(props) {
                 let validationError = [];
 
                 if (checkProductPrice.total != product.new_price) {
-                    validationError.push(`necesssário ajustar o valor dos produtos ${checkProductPrice.products}`);
+                    validationError.push(`necesssário ajustar o valor dos produto do pacote`);
                     setProduct(product => (
                         {
                             ...product,
@@ -118,7 +138,7 @@ function Validate(props) {
         }
 
     }, [packData])
-
+    
     return (
         <tr>
             <td >{product.product_code}</td>
@@ -136,7 +156,6 @@ function Validate(props) {
             </td>
         </tr>
     )
-
 }
 
 export default Validate

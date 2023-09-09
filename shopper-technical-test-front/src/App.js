@@ -6,7 +6,7 @@ import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState, useLayoutEffect } from 'react';
 import Papa from 'papaparse';
-import { newPriceProduct } from './models'
+
 import Validate from './validation';
 
 import client from './server/client';
@@ -18,7 +18,6 @@ function App() {
   const [newPrices, setNewPrices] = useState([]);
   const [pricesTable, setPricesTable] = useState([]);
 
-
   const changeHandler = (event) => {
     Papa.parse(event.target.files[0], {
       header: true,
@@ -29,11 +28,7 @@ function App() {
     });
   };
 
-  
-  
  function isInNewPriceList( packs = []){
-
-
 
   console.log('packs')
   console.log(packs)
@@ -113,16 +108,6 @@ return {total: packPrice, products: packProducts}
 
   );
 }
-/*
-    {  pricesTable.map((newPrice, index) => {
-               return <Validate newPrice={newPrice}/>;
-            }
-            )
-            }
-                    <td>1</td>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-*/
+
 
 export default App;

@@ -61,8 +61,7 @@ const server = new ApolloServer({
     resolvers,
     csrfPrevention: true,
 });
-console.log(process.env.MYSQL_ADDRESS);
-// The `listen` method launches a web server.
+
 server.listen().then(({ url }) => {
   console.log(`🚀  Server ready at ${url}`);
 });
