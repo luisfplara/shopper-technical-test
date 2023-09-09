@@ -1,3 +1,5 @@
+![program](https://github.com/luisfplara/shopper-technical-test/blob/main/layout.png)
+
 MySQL version 8 https://dev.mysql.com/downloads/file/?id=520407
 
 Node --version
