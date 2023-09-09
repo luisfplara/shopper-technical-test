@@ -29,7 +29,7 @@ function App() {
     });
   };
 
-
+  
   
  function isInNewPriceList( packs = []){
 
